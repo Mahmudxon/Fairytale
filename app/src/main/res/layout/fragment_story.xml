@@ -21,11 +21,17 @@
             name="nextText"
             type="String" />
 
-
         <variable
             name="onClick"
             type="android.view.View.OnClickListener" />
 
+        <variable
+            name="fontSize"
+            type="Integer" />
+
+        <variable
+            name="largeFontSize"
+            type="Integer" />
 
     </data>
 
@@ -77,7 +83,8 @@
                     android:layout_toEndOf="@id/back"
                     android:text="@{titleText}"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:text="@string/app_name" />
 
             </RelativeLayout>
         </com.google.android.material.appbar.AppBarLayout>
@@ -100,13 +107,16 @@
                     android:layout_marginTop="16dp"
                     android:text="@{titleText}"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:fontSize="@{largeFontSize}"
+                    tools:text="@string/app_name" />
 
                 <ImageView
                     android:id="@+id/img"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitStart" />
+                    android:scaleType="fitStart"
+                    tools:src="@drawable/ic_launcher_background" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -115,7 +125,9 @@
                     android:layout_marginRight="16dp"
                     android:text="@{storyText}"
                     android:textColor="#000"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:fontSize="@{fontSize}"
+                    tools:text="@string/sample" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -133,6 +145,7 @@
                         android:text="@{prevText}"
                         android:textSize="18sp"
                         app:drawableStartCompat="@drawable/ic_baseline_arrow_back_ios_24"
+                        app:fontSize="@{largeFontSize}"
                         app:onClick="@{onClick}"
                         tools:text="@string/app_name" />
 
@@ -147,6 +160,7 @@
                         android:textAlignment="textEnd"
                         android:textSize="18sp"
                         app:drawableEndCompat="@drawable/ic_baseline_navigate_next_24"
+                        app:fontSize="@{largeFontSize}"
                         app:onClick="@{onClick}"
                         tools:text="@string/app_name" />
 

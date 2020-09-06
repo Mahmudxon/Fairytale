@@ -1,4 +1,10 @@
 <resources>
 <string name="app_name">O\'zbek Xalq Ertaklari</string>
     <string name="search">Izlash...</string>
+    <string name="sample">
+   Psixologik tekshiruvlar shuni ko\’rsatdiki, bolaga ertak o\’qib berilganida unda:\n
+    * so\’z boyligi oshadi;\n
+    * kitobga mehri paydo bo\’ladi;\n
+    * muomilasi chiroyli bo\’ladi.\n
+</string>
 </resources>

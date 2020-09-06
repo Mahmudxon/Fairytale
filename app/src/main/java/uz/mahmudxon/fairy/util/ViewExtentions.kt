@@ -2,6 +2,7 @@ package uz.mahmudxon.fairy.util
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import uz.mahmudxon.fairy.R
@@ -31,4 +32,10 @@ fun View.visibility(isVisible: Boolean?) {
         if (isVisible == true)
             View.VISIBLE
         else View.GONE
+}
+
+@BindingAdapter("fontSize")
+fun TextView.setFontSize(size: Int) {
+    if (size > 0)
+        this.textSize = size.toFloat()
 }

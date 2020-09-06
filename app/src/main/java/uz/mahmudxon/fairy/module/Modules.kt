@@ -14,10 +14,12 @@ import uz.mahmudxon.fairy.repository.story.StoryResponseImpl
 import uz.mahmudxon.fairy.ui.main.MainViewModel
 import uz.mahmudxon.fairy.ui.search.SearchViewModel
 import uz.mahmudxon.fairy.ui.story.StoryViewModel
+import uz.mahmudxon.fairy.util.FontSizeManager
 import uz.mahmudxon.fairy.util.Prefs
 
 val appModule = module {
     single { Prefs(get()) }
+    single { FontSizeManager(get()) }
 }
 
 val dbModule = module {

@@ -1,11 +1,13 @@
 package uz.mahmudxon.fairy.ui.story
 
 import android.view.View
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.mahmudxon.fairy.R
 import uz.mahmudxon.fairy.databinding.FragmentStoryBinding
 import uz.mahmudxon.fairy.model.Fairytale
 import uz.mahmudxon.fairy.ui.base.BaseFragment
+import uz.mahmudxon.fairy.util.FontSizeManager
 import uz.mahmudxon.fairy.util.bindImage
 import uz.mahmudxon.fairy.util.visibility
 
@@ -14,9 +16,12 @@ class StoryFragment : BaseFragment(R.layout.fragment_story), View.OnClickListene
     private val binding: FragmentStoryBinding by lazy { (dataBinding as FragmentStoryBinding) }
     private var storyID = 0
     private val vm: StoryViewModel by viewModel()
+    private val fontSizeManager: FontSizeManager by inject()
 
     override fun onCreate(view: View) {
         binding.onClick = this
+        binding.largeFontSize = fontSizeManager.largeTextSize
+        binding.fontSize = fontSizeManager.currentSize
         arguments?.let {
             storyID = it.getInt("id")
         }
