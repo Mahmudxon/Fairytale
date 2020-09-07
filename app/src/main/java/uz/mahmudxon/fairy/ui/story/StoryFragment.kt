@@ -1,6 +1,7 @@
 package uz.mahmudxon.fairy.ui.story
 
 import android.view.View
+import android.widget.ScrollView
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.mahmudxon.fairy.R
@@ -8,6 +9,7 @@ import uz.mahmudxon.fairy.databinding.FragmentStoryBinding
 import uz.mahmudxon.fairy.model.Fairytale
 import uz.mahmudxon.fairy.ui.base.BaseFragment
 import uz.mahmudxon.fairy.util.FontSizeManager
+import uz.mahmudxon.fairy.util.Prefs
 import uz.mahmudxon.fairy.util.bindImage
 import uz.mahmudxon.fairy.util.visibility
 
@@ -17,6 +19,9 @@ class StoryFragment : BaseFragment(R.layout.fragment_story), View.OnClickListene
     private var storyID = 0
     private val vm: StoryViewModel by viewModel()
     private val fontSizeManager: FontSizeManager by inject()
+    private val prefs: Prefs by inject()
+    private val useVolumeButtons: Boolean
+        get() = prefs.get(prefs.useVolumeKeys, false)
 
     override fun onCreate(view: View) {
         binding.onClick = this
@@ -71,5 +76,21 @@ class StoryFragment : BaseFragment(R.layout.fragment_story), View.OnClickListene
             R.id.next -> vm.getStories(++storyID)
             R.id.prev -> vm.getStories(--storyID)
         }
+    }
+
+    override fun onKeyUpPress() {
+        if (useVolumeButtons) {
+            binding.scrollView.arrowScroll(ScrollView.FOCUS_UP)
+            return
+        }
+        super.onKeyUpPress()
+    }
+
+    override fun onKeyDownPress() {
+        if (useVolumeButtons) {
+            binding.scrollView.arrowScroll(ScrollView.FOCUS_DOWN)
+            return
+        }
+        super.onKeyDownPress()
     }
 }

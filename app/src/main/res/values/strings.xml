@@ -7,4 +7,7 @@
     * kitobga mehri paydo bo\’ladi;\n
     * muomilasi chiroyli bo\’ladi.\n
 </string>
+    <string name="use_volume_keys">Ovoz tugmasi orqali surish</string>
+    <string name="example_title">Na\'muna uchun text</string>
+    <string name="settings">Sozlamalar</string>
 </resources>

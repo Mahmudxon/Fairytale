@@ -15,6 +15,7 @@ import uz.mahmudxon.fairy.list.Adapter
 import uz.mahmudxon.fairy.list.IAdapterCallBack
 import uz.mahmudxon.fairy.model.Fairytale
 import uz.mahmudxon.fairy.ui.base.BaseFragment
+import uz.mahmudxon.fairy.util.Prefs
 
 class MainFragment : BaseFragment(R.layout.fragment_main), IAdapterCallBack, View.OnClickListener,
     Toolbar.OnMenuItemClickListener {
@@ -23,6 +24,9 @@ class MainFragment : BaseFragment(R.layout.fragment_main), IAdapterCallBack, Vie
     lateinit var binding: FragmentMainBinding
     private val adapter: Adapter by inject()
     private val navController: NavController by lazy { findNavController() }
+    private val prefs: Prefs by inject()
+    private val useVolumeButtons: Boolean
+        get() = prefs.get(prefs.useVolumeKeys, false)
 
     override fun onCreate(view: View) {
         binding = dataBinding as FragmentMainBinding
@@ -41,6 +45,7 @@ class MainFragment : BaseFragment(R.layout.fragment_main), IAdapterCallBack, Vie
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.search -> openSearchFragment()
+            R.id.settings -> navController.navigate(R.id.action_mainFragment_to_settingsFragment)
         }
     }
 
@@ -56,5 +61,21 @@ class MainFragment : BaseFragment(R.layout.fragment_main), IAdapterCallBack, Vie
             }
             else -> false
         }
+    }
+
+    override fun onKeyUpPress() {
+        if (useVolumeButtons) {
+            binding.list.smoothScrollBy(-400, -400)
+            return
+        }
+        super.onKeyUpPress()
+    }
+
+    override fun onKeyDownPress() {
+        if (useVolumeButtons) {
+            binding.list.smoothScrollBy(400, 400)
+            return
+        }
+        super.onKeyDownPress()
     }
 }
