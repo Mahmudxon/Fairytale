@@ -32,6 +32,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search), TextWatcher, IAda
         binding.search.addTextChangedListener(this)
         adapter.itemClick = this
         vm.getStories().observe(this, { adapter.setData(it) })
+        vm.getStories("bla bla bla") // to clear data from view model scope
     }
 
     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {

@@ -14,6 +14,7 @@ import uz.mahmudxon.fairy.databinding.FragmentMainBinding
 import uz.mahmudxon.fairy.list.Adapter
 import uz.mahmudxon.fairy.list.IAdapterCallBack
 import uz.mahmudxon.fairy.model.Fairytale
+import uz.mahmudxon.fairy.ui.MainActivity
 import uz.mahmudxon.fairy.ui.base.BaseFragment
 import uz.mahmudxon.fairy.util.Prefs
 
@@ -46,6 +47,7 @@ class MainFragment : BaseFragment(R.layout.fragment_main), IAdapterCallBack, Vie
         when (p0?.id) {
             R.id.search -> openSearchFragment()
             R.id.settings -> navController.navigate(R.id.action_mainFragment_to_settingsFragment)
+            R.id.menu -> (activity as MainActivity?)?.openDrawer()
         }
     }
 
@@ -78,4 +80,5 @@ class MainFragment : BaseFragment(R.layout.fragment_main), IAdapterCallBack, Vie
         }
         super.onKeyDownPress()
     }
+
 }

@@ -10,117 +10,115 @@
             type="android.view.View.OnClickListener" />
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar_layout"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:background="@color/background"
-            android:theme="@style/AppTheme">
+            android:layout_height="match_parent">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/collapse_toolbar"
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@color/background"
+                android:theme="@style/AppTheme">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapse_toolbar"
+                    style="@style/AppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_collapseMode="pin"
+                        app:menu="@menu/search_menu"
+                        app:title="@string/app_name"
+                        tools:visibility="invisible" />
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@color/background"
+                android:fitsSystemWindows="true"
+                app:layout_anchor="@id/app_bar_layout">
+
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="48dp"
+                    android:src="@drawable/ic_menu"
+                    app:backgroundTint="@color/background"
+                    app:fabCustomSize="35dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:maxImageSize="20dp"
+                    app:onClick="@{onClick}" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/ic_baseline_search_24"
+                    app:backgroundTint="@color/background"
+                    app:fabCustomSize="35dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:maxImageSize="20dp"
+                    app:onClick="@{onClick}" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/settings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/ic_settings"
+                    app:backgroundTint="@color/background"
+                    app:fabCustomSize="35dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/search"
+                    app:maxImageSize="20dp"
+                    app:onClick="@{onClick}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="@id/menu"
+                    app:layout_constraintRight_toLeftOf="@id/settings"
+                    app:layout_constraintTop_toBottomOf="@id/menu" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                style="@style/AppTheme"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:background="@color/background"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                tools:listitem="@layout/list_item_layout" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:layout_collapseMode="pin"
-                    tools:visibility="invisible"
-                    app:title="@string/app_name"
-                    app:menu="@menu/search_menu"
-                    />
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:background="@color/background"
-            android:fitsSystemWindows="true"
-            app:layout_anchor="@id/app_bar_layout"
-            >
-
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/menu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="48dp"
-                android:src="@drawable/ic_menu"
-                app:backgroundTint="@color/background"
-                app:fabCustomSize="35dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:maxImageSize="20dp"
-                app:onClick="@{onClick}"
-                />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
-                android:layout_marginEnd="30dp"
-                android:src="@drawable/ic_baseline_search_24"
-                app:backgroundTint="@color/background"
-                app:fabCustomSize="35dp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:maxImageSize="20dp"
-                app:onClick="@{onClick}"
-                />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/settings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:src="@drawable/ic_settings"
-                app:backgroundTint="@color/background"
-                app:fabCustomSize="35dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/search"
-                app:maxImageSize="20dp"
-                app:onClick="@{onClick}"
-                />
-
-            <TextView
-                app:layout_constraintTop_toBottomOf="@id/menu"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="@id/menu"
-                app:layout_constraintRight_toLeftOf="@id/settings"
-                android:text="@string/app_name"
-                android:textStyle="bold"
-                android:textSize="36sp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list"
-            android:background="@color/background"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_weight="1"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            tools:listitem="@layout/list_item_layout" />
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

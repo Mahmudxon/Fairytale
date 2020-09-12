@@ -1,5 +1,6 @@
 <resources>
 <string name="app_name">O\'zbek Xalq Ertaklari</string>
+    <string name="short_app_name">Ertaklar</string>
     <string name="search">Izlash...</string>
     <string name="sample">
    Psixologik tekshiruvlar shuni ko\’rsatdiki, bolaga ertak o\’qib berilganida unda:\n
@@ -10,4 +11,8 @@
     <string name="use_volume_keys">Ovoz tugmasi orqali surish</string>
     <string name="example_title">Na\'muna uchun text</string>
     <string name="settings">Sozlamalar</string>
+    <string name="about_app">Dastur haqida</string>
+    <string name="developer">Dasturchi: Mahmudxon Umarxonov</string>
+    <string name="copyright">© Mahmudxon - 2020</string>
+    <string name="app_description">O\'zbek xalq ertaklaridan tashkil topgan android ilova.</string>
 </resources>

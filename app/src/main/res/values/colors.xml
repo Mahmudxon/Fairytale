@@ -9,4 +9,6 @@
     <color name="statusBarV23">@color/background</color>
     <color name="defTextColor">#22264C</color>
     <color name="black">#000</color>
+    <color name="gray_home">#535353</color>
+
 </resources>
